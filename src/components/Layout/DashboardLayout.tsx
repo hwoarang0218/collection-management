@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styles from "./DashboardLayout.module.css";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar"; // Adjust the import path as necessary
+import DashboardCards from "../dashboard/DashboardCards";
+import CollectionByBrand from "../dashboard/CollectionByBrand";
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -22,7 +24,11 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
           isOpen={isSidebarOpen}
           onClose={() => setIsSidebarOpen(false)}
         />
-        <main className={styles.mainContent}>{children}</main>
+        <main className={styles.mainContent}>
+          <DashboardCards />
+          <CollectionByBrand />
+          {children}
+        </main>
       </div>
     </div>
   );

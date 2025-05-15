@@ -1,0 +1,53 @@
+.brandSection {
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #1f2937;
+}
+
+.brandGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.brandSlider {
+  padding: 0 20px;
+}
+
+.brandCard {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 0 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 100px;
+}
+
+.brandCard h3 {
+  margin: 0 0 0.5rem 0;
+  color: #2563eb;
+}
+
+.brandCard p {
+  margin: 0;
+  color: #6b7280;
+}
+
+/* Correct syntax for global selectors in CSS modules */
+.brandSlider :global(.slick-prev),
+.brandSlider :global(.slick-next) {
+  background: #2563eb !important;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
+
+.brandSlider :global(.slick-prev:hover),
+.brandSlider :global(.slick-next:hover) {
+  background: #1d4ed8 !important;
+}
