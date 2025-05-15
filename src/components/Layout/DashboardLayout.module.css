@@ -1,0 +1,23 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.contentWrapper {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.mainContent {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+  .contentWrapper {
+    position: relative;
+  }
+}
