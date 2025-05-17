@@ -1,0 +1,20 @@
+{
+  "collections": [
+    {
+      "id": "1",
+      "name": "Fantasy Books",
+      "description": "My fantasy book collection",
+      "category": "books",
+      "brand": "Penguin",
+      "createdAt": "2023-10-15T10:00:00Z"
+    },
+    {
+      "id": "2",
+      "name": "Vinyl Records",
+      "description": "Classic rock collection",
+      "category": "music",
+      "brand": "Sony",
+      "createdAt": "2023-10-14T15:30:00Z"
+    }
+  ]
+}

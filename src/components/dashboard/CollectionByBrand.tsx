@@ -5,45 +5,54 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { getBrandLogo } from "../../utils/logoFetcher";
 
+interface Collection {
+  id: string;
+  name: string;
+  brand: string;
+  category: string;
+}
+
 interface BrandData {
   name: string;
   items: number;
   logo: string;
 }
 
-const brands: BrandData[] = [
-  {
-    name: "Nike",
-    items: 32,
-    logo: "",
-  },
-  {
-    name: "Adidas",
-    items: 28,
-    logo: "",
-  },
-  {
-    name: "Puma",
-    items: 15,
-    logo: "",
-  },
-];
-
 const CollectionByBrand: React.FC = () => {
   const [brandsWithLogos, setBrandsWithLogos] = useState<BrandData[]>([]);
 
   useEffect(() => {
-    const loadBrandLogos = async () => {
-      const loadedBrands = await Promise.all(
-        brands.map(async (brand) => ({
-          ...brand,
-          logo: await getBrandLogo(brand.name),
-        }))
-      );
-      setBrandsWithLogos(loadedBrands);
+    const loadBrandsData = async () => {
+      try {
+        // Fetch collections data
+        const response = await fetch("/mockData/collections.json");
+        const data = await response.json();
+        const collections: Collection[] = data.collections;
+
+        // Process collections into brand statistics
+        const brandStats = collections.reduce((acc, item) => {
+          const brand = item.brand || "Unspecified";
+          acc[brand] = (acc[brand] || 0) + 1;
+          return acc;
+        }, {} as Record<string, number>);
+
+        // Convert to BrandData array and load logos
+        const brandsData = await Promise.all(
+          Object.entries(brandStats).map(async ([name, items]) => ({
+            name,
+            items,
+            logo: await getBrandLogo(name),
+          }))
+        );
+
+        setBrandsWithLogos(brandsData);
+      } catch (error) {
+        console.error("Error loading brands data:", error);
+        setBrandsWithLogos([]);
+      }
     };
 
-    loadBrandLogos();
+    loadBrandsData();
   }, []);
 
   const settings = {

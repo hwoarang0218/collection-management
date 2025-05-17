@@ -12,6 +12,8 @@
     "@types/react-slick": "^0.23.13",
     "lucide-react": "^0.510.0",
     "next": "15.3.2",
+    "node-fetch": "^3.3.2",
+    "open-graph-scraper": "^6.10.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-slick": "^0.30.3",
@@ -20,6 +22,7 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/open-graph-scraper": "^4.8.5",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "tailwindcss": "^4",
