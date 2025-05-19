@@ -1,16 +1,38 @@
 import React, { useState } from "react";
 import styles from "./Navbar.module.css";
-import { UserCircle, Settings, LogOut, User, X } from "lucide-react";
+import { UserCircle, Settings, LogOut, User, X, Palette } from "lucide-react";
+import { useTheme } from "next-themes";
 
 interface NavbarProps {
   onMenuClick: () => void;
 }
 
+interface ThemeOption {
+  name: string;
+  color: string;
+}
+
 const Navbar: React.FC<NavbarProps> = ({ onMenuClick }) => {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  const [isCustomizeOpen, setIsCustomizeOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
+
+  const themeOptions: ThemeOption[] = [
+    { name: "Dark", color: "#333333" },
+    { name: "Light", color: "#ffffff" },
+    { name: "Blue", color: "#1e90ff" },
+  ];
 
   const toggleUserMenu = () => {
     setIsUserMenuOpen(!isUserMenuOpen);
+  };
+
+  const toggleCustomize = () => {
+    setIsCustomizeOpen(!isCustomizeOpen);
+  };
+
+  const handleThemeChange = (themeName: string) => {
+    setTheme(themeName.toLowerCase());
   };
 
   return (
@@ -44,6 +66,28 @@ const Navbar: React.FC<NavbarProps> = ({ onMenuClick }) => {
                 <User size={18} />
                 <span>Profile</span>
               </button>
+
+              <button className={styles.menuItem} onClick={toggleCustomize}>
+                <Palette size={18} />
+                <span>Customize</span>
+              </button>
+              {isCustomizeOpen && (
+                <div className={styles.submenuItems}>
+                  {themeOptions.map((theme) => (
+                    <button
+                      key={theme.name}
+                      className={styles.submenuItem}
+                      onClick={() => handleThemeChange(theme.name)}
+                    >
+                      <div
+                        className={styles.colorIcon}
+                        style={{ backgroundColor: theme.color }}
+                      />
+                      <span>{theme.name}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
               <button className={styles.menuItem}>
                 <Settings size={18} />
                 <span>Settings</span>
