@@ -1,0 +1,24 @@
+{
+  "collections": [
+    {
+      "id": 1,
+      "name": "Summer 2023",
+      "brand": "Nike"
+    },
+    {
+      "id": 2,
+      "name": "Winter 2023",
+      "brand": "Nike"
+    },
+    {
+      "id": 3,
+      "name": "Sport Collection",
+      "brand": "Adidas"
+    },
+    {
+      "id": 4,
+      "name": "Classic Series",
+      "brand": "Puma"
+    }
+  ]
+}

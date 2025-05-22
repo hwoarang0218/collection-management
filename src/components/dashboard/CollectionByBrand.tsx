@@ -1,5 +1,7 @@
+"use client";
 import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
+import { useRouter } from "next/navigation";
 import styles from "./CollectionByBrand.module.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -10,39 +12,47 @@ interface Collection {
   name: string;
   brand: string;
   category: string;
+  image: string; // Add this line
 }
 
 interface BrandData {
   name: string;
   items: number;
   logo: string;
+  collections?: Collection[];
 }
 
 const CollectionByBrand: React.FC = () => {
+  const router = useRouter();
+
   const [brandsWithLogos, setBrandsWithLogos] = useState<BrandData[]>([]);
 
   useEffect(() => {
     const loadBrandsData = async () => {
       try {
-        // Fetch collections data
         const response = await fetch("/mockData/collections.json");
         const data = await response.json();
         const collections: Collection[] = data.collections;
 
-        // Process collections into brand statistics
-        const brandStats = collections.reduce((acc, item) => {
-          const brand = item.brand || "Unspecified";
-          acc[brand] = (acc[brand] || 0) + 1;
+        // Group collections by brand
+        const brandCollections = collections.reduce((acc, collection) => {
+          const brand = collection.brand || "Unspecified";
+          if (!acc[brand]) {
+            acc[brand] = [];
+          }
+          acc[brand].push(collection);
           return acc;
-        }, {} as Record<string, number>);
+        }, {} as Record<string, Collection[]>);
 
-        // Convert to BrandData array and load logos
         const brandsData = await Promise.all(
-          Object.entries(brandStats).map(async ([name, items]) => ({
-            name,
-            items,
-            logo: await getBrandLogo(name),
-          }))
+          Object.entries(brandCollections).map(
+            async ([name, brandCollections]) => ({
+              name,
+              items: brandCollections.length,
+              logo: await getBrandLogo(name),
+              collections: brandCollections,
+            })
+          )
         );
 
         setBrandsWithLogos(brandsData);
@@ -54,6 +64,10 @@ const CollectionByBrand: React.FC = () => {
 
     loadBrandsData();
   }, []);
+
+  const handleBrandClick = (brand: BrandData) => {
+    router.push(`/collections/${encodeURIComponent(brand.name.toLowerCase())}`);
+  };
 
   const settings = {
     dots: true,
@@ -87,7 +101,11 @@ const CollectionByBrand: React.FC = () => {
       <h2 className={styles.sectionTitle}>Explore Collection</h2>
       <Slider {...settings} className={styles.brandSlider}>
         {brandsWithLogos.map((brand, index) => (
-          <div key={index} className={styles.brandCardWrapper}>
+          <div
+            key={index}
+            className={styles.brandCardWrapper}
+            onClick={() => handleBrandClick(brand)}
+          >
             <div
               className={styles.brandCard}
               style={{
@@ -95,6 +113,7 @@ const CollectionByBrand: React.FC = () => {
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 margin: "0 10px",
+                cursor: "pointer",
               }}
             >
               <div className={styles.overlay}>

@@ -1,9 +1,9 @@
+"use client";
 import React, { useState } from "react";
+import { usePathname } from "next/navigation";
 import styles from "./DashboardLayout.module.css";
 import Navbar from "./Navbar";
-import Sidebar from "./Sidebar"; // Adjust the import path as necessary
-import DashboardCards from "../dashboard/DashboardCards";
-import CollectionByBrand from "../dashboard/CollectionByBrand";
+import Sidebar from "./Sidebar";
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -11,6 +11,7 @@ interface DashboardLayoutProps {
 
 const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const pathname = usePathname();
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -24,9 +25,11 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
           isOpen={isSidebarOpen}
           onClose={() => setIsSidebarOpen(false)}
         />
-        <main className={styles.mainContent}>
-          <DashboardCards />
-          <CollectionByBrand />
+        <main
+          className={`${styles.mainContent} ${
+            pathname === "/" ? styles.homePage : ""
+          }`}
+        >
           {children}
         </main>
       </div>

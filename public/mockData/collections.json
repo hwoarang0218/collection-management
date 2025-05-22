@@ -1,20 +1,157 @@
 {
   "collections": [
     {
-      "id": "1",
-      "name": "Fantasy Books",
-      "description": "My fantasy book collection",
-      "category": "books",
-      "brand": "Penguin",
-      "createdAt": "2023-10-15T10:00:00Z"
+      "id": "r1",
+      "name": "Rolex Submariner",
+      "description": "Iconic diving watch from Rolex",
+      "category": "watches",
+      "brand": "Rolex",
+      "model": "Submariner",
+      "reference": "126610LN",
+      "year": "2020",
+      "createdAt": "2023-10-15T10:00:00Z",
+      "image": "https://chronologie.eu/wp-content/uploads/2021/02/Rolex-Submariner-Date-126610LN-Chronologie--e1680183098700.webp"
     },
     {
-      "id": "2",
-      "name": "Vinyl Records",
-      "description": "Classic rock collection",
-      "category": "music",
-      "brand": "Sony",
-      "createdAt": "2023-10-14T15:30:00Z"
+      "id": "r2",
+      "name": "Rolex Daytona",
+      "description": "Legendary chronograph timepiece",
+      "category": "watches",
+      "brand": "Rolex",
+      "model": "Daytona",
+      "reference": "116500LN",
+      "year": "2016",
+      "createdAt": "2023-10-15T10:01:00Z",
+      "image": "/images/watches/rolex-daytona-116500ln.jpg"
+    },
+    {
+      "id": "r3",
+      "name": "Rolex GMT-Master II",
+      "description": "Dual timezone luxury watch",
+      "category": "watches",
+      "brand": "Rolex",
+      "model": "GMT-Master II",
+      "reference": "126710BLRO",
+      "year": "2018",
+      "createdAt": "2023-10-15T10:02:00Z",
+      "image": "/images/watches/rolex-gmt-master-126710blro.jpg"
+    },
+    {
+      "id": "s1",
+      "name": "Seiko Prospex",
+      "description": "Professional specifications diving watch",
+      "category": "watches",
+      "brand": "Seiko",
+      "model": "Prospex",
+      "reference": "SPB143",
+      "year": "2020",
+      "createdAt": "2023-10-14T15:30:00Z",
+      "image": "/images/watches/seiko-prospex-spb143.jpg"
+    },
+    {
+      "id": "s2",
+      "name": "Seiko Presage",
+      "description": "Elegant dress watch with Japanese craftsmanship",
+      "category": "watches",
+      "brand": "Seiko",
+      "model": "Presage",
+      "reference": "SRPB41",
+      "year": "2017",
+      "createdAt": "2023-10-14T15:31:00Z",
+      "image": "/images/watches/seiko-presage-srpb41.jpg"
+    },
+    {
+      "id": "s3",
+      "name": "Grand Seiko",
+      "description": "Premium Japanese watchmaking",
+      "category": "watches",
+      "brand": "Seiko",
+      "model": "Grand Seiko",
+      "reference": "SBGA211",
+      "year": "2019",
+      "createdAt": "2023-10-14T15:32:00Z",
+      "image": "/images/watches/grand-seiko-sbga211.jpg"
+    },
+    {
+      "id": "t1",
+      "name": "TAG Heuer Carrera",
+      "description": "Iconic racing chronograph",
+      "category": "watches",
+      "brand": "TAG Heuer",
+      "model": "Carrera",
+      "reference": "CBN2A1F",
+      "year": "2021",
+      "createdAt": "2023-10-16T09:00:00Z",
+      "image": "/images/watches/tag-heuer-carrera-cbn2a1f.jpg"
+    },
+    {
+      "id": "t2",
+      "name": "TAG Heuer Monaco",
+      "description": "Square-cased racing legend",
+      "category": "watches",
+      "brand": "TAG Heuer",
+      "model": "Monaco",
+      "reference": "CAW211P",
+      "year": "2020",
+      "createdAt": "2023-10-16T09:01:00Z",
+      "image": "/images/watches/tag-heuer-monaco-caw211p.jpg"
+    },
+    {
+      "id": "p1",
+      "name": "Patek Philippe Nautilus",
+      "description": "Luxury sports watch icon",
+      "category": "watches",
+      "brand": "Patek Philippe",
+      "model": "Nautilus",
+      "reference": "5711/1A",
+      "year": "2021",
+      "createdAt": "2023-10-16T09:02:00Z",
+      "image": "/images/watches/patek-philippe-nautilus-5711-1a.jpg"
+    },
+    {
+      "id": "p2",
+      "name": "Patek Philippe Calatrava",
+      "description": "Classic dress watch excellence",
+      "category": "watches",
+      "brand": "Patek Philippe",
+      "model": "Calatrava",
+      "reference": "5227G",
+      "year": "2021",
+      "createdAt": "2023-10-16T09:03:00Z",
+      "image": "/images/watches/patek-philippe-calatrava-5227g.jpg"
+    },
+    {
+      "id": "o1",
+      "name": "Omega Speedmaster",
+      "description": "Moonwatch Professional",
+      "category": "watches",
+      "brand": "Omega",
+      "model": "Speedmaster",
+      "reference": "310.30.42.50.01.001",
+      "year": "2021",
+      "createdAt": "2023-10-16T09:04:00Z",
+      "image": "/images/watches/omega-speedmaster-310304250.jpg"
+    },
+    {
+      "id": "o2",
+      "name": "Omega Seamaster",
+      "description": "Professional diving watch",
+      "category": "watches",
+      "brand": "Omega",
+      "model": "Seamaster",
+      "reference": "210.30.42.20.01.001",
+      "year": "2021",
+      "createdAt": "2023-10-16T09:05:00Z",
+      "image": "/images/watches/omega-seamaster-210304220.jpg"
+    },
+    {
+      "name": "Nike Downshifter 13 Men's Road Running Shoes",
+      "description": "Find the Nike Downshifter 13 Men's Road Running Shoes at Nike.com.  Free delivery and returns on select orders.",
+      "category": "website",
+      "brand": "Nike.com",
+      "url": "https://www.nike.com/ph/t/downshifter-13-road-running-shoes-4Gw85J/FD6454-001",
+      "id": "1747934556192",
+      "createdAt": "2025-05-22T17:22:36.192Z"
     }
   ]
 }

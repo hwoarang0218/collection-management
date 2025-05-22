@@ -1,0 +1,14 @@
+{
+  "brands": [
+    {
+      "name": "rolex",
+      "icon": "https://www.pngplay.com/wp-content/uploads/13/Rolex-Logo-Transparent-Image.png",
+      "image": "https://e7.pngegg.com/pngimages/125/233/png-clipart-rolex-logo-rolex-logo-icons-logos-emojis-iconic-brands.png"
+    },
+    {
+      "name": "nike",
+      "icon": "",
+      "image": ""
+    }
+  ]
+}

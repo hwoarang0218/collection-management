@@ -3,6 +3,10 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --text-primary: #171717;
+  --text-secondary: #525252;
+  --text-muted: #737373;
+  --text-inverse: #ffffff;
 }
 
 @theme inline {
@@ -16,32 +20,55 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --text-primary: #ffffff;
+    --text-secondary: #d4d4d4;
+    --text-muted: #a3a3a3;
+    --text-inverse: #171717;
   }
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
+  color: var(--text-primary);
   font-family: Arial, Helvetica, sans-serif;
 }
 
 [data-theme="light"] {
   --background: #ffffff;
-  --foreground: #000000;
+  --foreground: #ffffff;
+  --text-primary: #000000;
+  --text-secondary: #000000;
+  --text-muted: #737373;
+  --text-inverse: #ffffff;
 }
 
 [data-theme="dark"] {
-  --background: black;
-  --foreground: white;
+  --background: #0a0a0a;
+  --foreground: #ffffff;
+  --text-primary: #ffffff;
+  --text-secondary: #000000;
+  --text-muted: #a3a3a3;
+  --text-inverse: #171717;
+}
+
+[data-theme="gradient"] {
+  --background: linear-gradient(
+    66deg,
+    rgba(63, 94, 251, 1) 0%,
+    rgba(252, 70, 107, 1) 100%
+  );
+  --foreground: #ffffff;
+  --text-primary: #ffffff;
+  --text-secondary: #000000;
+  --text-muted: #e0e0e0;
+  --text-inverse: #000000;
 }
 
 [data-theme="blue"] {
-  --background: #3b82f6;
-  --foreground: blue;
-  /* --text: white;
-  --color-primary: #3b82f6;
-  --color-secondary: #1e40af;
-  --color-accent: #e0f2fe;
-  --color-background: #eff6ff;
-  --color-text: #1e293b; */
+  --background: #ffffff;
+  --foreground: #3b82f6;
+  --text-primary: #3b82f6;
+  --text-secondary: #000000;
+  --text-muted: #60a5fa;
+  --text-inverse: #ffffff;
 }

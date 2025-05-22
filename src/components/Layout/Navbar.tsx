@@ -21,6 +21,11 @@ const Navbar: React.FC<NavbarProps> = ({ onMenuClick }) => {
     { name: "Dark", color: "#333333" },
     { name: "Light", color: "#ffffff" },
     { name: "Blue", color: "#1e90ff" },
+    {
+      name: "Gradient",
+      color:
+        "linear-gradient(66deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%)",
+    },
   ];
 
   const toggleUserMenu = () => {
@@ -40,7 +45,14 @@ const Navbar: React.FC<NavbarProps> = ({ onMenuClick }) => {
       <div className={styles.menuButton} onClick={onMenuClick}>
         <span className={styles.menuIcon}></span>
       </div>
-      <div className={styles.logo}>Collection Management</div>
+      <div
+        className={styles.logo}
+        onClick={() => {
+          window.location.href = "/";
+        }}
+      >
+        Collection Management
+      </div>
       <div className={styles.userMenu}>
         <UserCircle
           onClick={toggleUserMenu}
@@ -81,7 +93,11 @@ const Navbar: React.FC<NavbarProps> = ({ onMenuClick }) => {
                     >
                       <div
                         className={styles.colorIcon}
-                        style={{ backgroundColor: theme.color }}
+                        style={{
+                          background: theme.color,
+                          width: "16px",
+                          height: "16px",
+                        }}
                       />
                       <span>{theme.name}</span>
                     </button>
