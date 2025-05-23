@@ -81,7 +81,8 @@ export default function BrandCollections() {
     setSaveStatus("Saving...");
 
     try {
-      const response = await fetch("/api/brands/update", {
+      // Update brand details
+      const brandResponse = await fetch("/api/brands/update", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -92,7 +93,23 @@ export default function BrandCollections() {
         }),
       });
 
-      if (!response.ok) throw new Error("Failed to save");
+      if (!brandResponse.ok) throw new Error("Failed to save brand");
+
+      // Update collections with new brand name
+      if (brandDetails.name.toLowerCase() !== brand?.toLowerCase()) {
+        const collectionsResponse = await fetch("/api/collections/update-brand", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            oldBrand: brand,
+            newBrand: brandDetails.name,
+          }),
+        });
+
+        if (!collectionsResponse.ok) throw new Error("Failed to update collections");
+      }
 
       setSaveStatus("Saved successfully!");
       setTimeout(() => setSaveStatus(""), 3000);

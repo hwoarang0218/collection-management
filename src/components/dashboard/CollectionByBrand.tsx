@@ -13,6 +13,7 @@ interface Collection {
   brand: string;
   category: string;
   image: string; // Add this line
+  icon: string; // Add this line
 }
 
 interface BrandData {
@@ -44,15 +45,24 @@ const CollectionByBrand: React.FC = () => {
           return acc;
         }, {} as Record<string, Collection[]>);
 
-        const brandsData = await Promise.all(
-          Object.entries(brandCollections).map(
-            async ([name, brandCollections]) => ({
+        const responseBrands = await fetch("/mockData/brands.json");
+        const brandsJson = await responseBrands.json();
+
+        const brandsData = Object.entries(brandCollections).map(
+          ([name, brandCollections]) => {
+            const brandInfo = brandsJson.brands.find(
+              (brand: { name: string }) => brand.name === name.toLowerCase()
+            );
+
+            console.log(name);
+
+            return {
               name,
               items: brandCollections.length,
-              logo: await getBrandLogo(name),
+              logo: brandInfo?.icon || "", // Get logo from brands.json or fallback to empty string
               collections: brandCollections,
-            })
-          )
+            };
+          }
         );
 
         setBrandsWithLogos(brandsData);
