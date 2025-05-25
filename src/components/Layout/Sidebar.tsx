@@ -1,7 +1,8 @@
+"use client";
 import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import styles from "./Sidebar.module.css";
-import collectionsData from "../../../public/mockdata/collections.json";
+import collectionsData from "../../../public/mockData/collections.json";
 
 interface SidebarProps {
   isOpen: boolean;
