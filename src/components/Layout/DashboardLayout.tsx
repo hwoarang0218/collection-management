@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import styles from "./DashboardLayout.module.css";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
+import { useSession } from "next-auth/react";
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -12,6 +13,7 @@ interface DashboardLayoutProps {
 const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const pathname = usePathname();
+  const { data: session } = useSession();
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -19,7 +21,20 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
 
   return (
     <div className={styles.dashboard}>
-      <Navbar onMenuClick={toggleSidebar} />
+      <Navbar
+        onMenuClick={toggleSidebar}
+        session={
+          session
+            ? {
+                user: {
+                  name: session.user?.name ?? undefined,
+                  email: session.user?.email ?? undefined,
+                  image: session.user?.image ?? undefined,
+                },
+              }
+            : undefined
+        }
+      />
       <div className={styles.contentWrapper}>
         <Sidebar
           isOpen={isSidebarOpen}

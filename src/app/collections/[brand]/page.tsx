@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { MoreVertical, Grid, List, X } from "lucide-react";
 import styles from "./page.module.css";
-import DashboardLayout from "@/components/Layout/DashboardLayout";
+import DashboardLayout from "../../../components/Layout/DashboardLayout";
 
 interface Collection {
   id: string;
@@ -97,18 +97,22 @@ export default function BrandCollections() {
 
       // Update collections with new brand name
       if (brandDetails.name.toLowerCase() !== brand?.toLowerCase()) {
-        const collectionsResponse = await fetch("/api/collections/update-brand", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            oldBrand: brand,
-            newBrand: brandDetails.name,
-          }),
-        });
+        const collectionsResponse = await fetch(
+          "/api/collections/update-brand",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              oldBrand: brand,
+              newBrand: brandDetails.name,
+            }),
+          }
+        );
 
-        if (!collectionsResponse.ok) throw new Error("Failed to update collections");
+        if (!collectionsResponse.ok)
+          throw new Error("Failed to update collections");
       }
 
       setSaveStatus("Saved successfully!");
