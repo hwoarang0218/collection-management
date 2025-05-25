@@ -1,8 +1,7 @@
 "use client";
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 import styles from "./Sidebar.module.css";
-import collectionsData from "../../../public/mockData/collections.json";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -11,13 +10,22 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   const [isCollectionsOpen, setIsCollectionsOpen] = useState(false);
+  const [collectionsData, setCollectionsData] = useState<{
+    collections: { brand: string }[];
+  }>({ collections: [] });
+
+  useEffect(() => {
+    fetch("/mockData/collections.json")
+      .then((res) => res.json())
+      .then((data) => setCollectionsData(data));
+  }, []);
 
   const brandGroups = useMemo(() => {
     const brands = [
       ...new Set(collectionsData.collections.map((c) => c.brand)),
     ];
     return brands.sort();
-  }, []);
+  }, [collectionsData]);
 
   return (
     <div className={`${styles.sidebar} ${isOpen ? styles.open : ""}`}>

@@ -1,8 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import { MoreVertical, Grid, List } from "lucide-react";
-import styles from "./page.module.css";
 import DashboardLayout from "../../components/Layout/DashboardLayout";
 
 interface Collection {
